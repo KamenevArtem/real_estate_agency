@@ -6,6 +6,7 @@ from .models import Flat
 
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town', 'town_destrict']
+    readonly_fields = ['created_at',]
     pass
 
 admin.site.register(Flat, FlatAdmin)
