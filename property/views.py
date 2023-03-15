@@ -15,11 +15,11 @@ def show_flats(request):
     town = request.GET.get('town')
     min_price = format_price(request.GET.get('min_price'))
     max_price = format_price(request.GET.get('max_price'))
-    new_building = request.GET.get('new_building') == '1'
+    new_building = request.GET.get('new_building')
 
     flats = Flat.objects.all()
-    for flat in flats:
-        print(flat.construction_year)
+    if new_building:
+        flats = flats.filter(new_building=True)
     if town:
         flats = flats.filter(town=town)
     if min_price:
