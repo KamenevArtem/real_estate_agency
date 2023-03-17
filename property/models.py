@@ -52,7 +52,7 @@ class Flat(models.Model):
                                        null=True,
                                        blank=True
                                        )
-    liked_by = models.ManyToManyField(User, related_name="liked_flats", verbose_name='Кто лайкнул')
+    liked_by = models.ManyToManyField(User, related_name="liked_flats", verbose_name='Кто лайкнул', blank=True)
     owner_pure_phone = PhoneNumberField(blank=True, verbose_name='Нормализированный номер владельца')
 
     def __str__(self):
