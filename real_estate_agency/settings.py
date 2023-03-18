@@ -101,3 +101,5 @@ DATABASES = {
         os.getenv('DATABASE', 'sqlite:///db.sqlite3')
     ),
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
