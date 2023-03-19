@@ -82,7 +82,7 @@ class Complaint(models.Model):
         blank=True
         )
     def __str__(self):
-        return f'{self.complaint}'
+        return f'{self.flat}, {self.user}'
 
 
 class Owner(models.Model):
