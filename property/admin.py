@@ -26,9 +26,9 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ['owned_flats']
+    raw_id_fields = ['flats']
     inlines = [AdminInline]
-    exclude = ['owned_flats']
+    exclude = ['flats']
     pass
 
 
