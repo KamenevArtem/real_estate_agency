@@ -50,7 +50,8 @@ class Flat(models.Model):
         'Является новостройкой?',
         null=True,
         blank=True,
-        db_index=True
+        db_index=True,
+        default=False
         )
     liked_by = models.ManyToManyField(
         User,

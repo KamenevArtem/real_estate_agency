@@ -4,13 +4,14 @@ from django.db import migrations
 
 def fill_Flat_new_building_field(property, schema_editor):
     Flat = property.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
-        if flat.construction_year and flat.construction_year >= 2015:
-            flat.new_building = True
-            flat.save()
-        else:
-            flat.new_building = False
-            flat.save()
+    flats = Flat.objects.select_related(
+        'constrstucrion_year'
+        ).filter(
+            construction_year__gte=2015
+            ).update(
+                new_building=True
+                )
+
 
 
 class Migration(migrations.Migration):
