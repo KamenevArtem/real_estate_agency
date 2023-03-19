@@ -68,13 +68,15 @@ class Complaint(models.Model):
         User,                             
         on_delete=models.SET_NULL,
         blank=True,
-        null=True
+        null=True,
+        related_name='complaints'
         )
     flat = models.ForeignKey(
         Flat,
         on_delete=models.SET_NULL,
         blank=True,
-        null=True
+        null=True,
+        related_name='complaints'
         )
     complaint = models.TextField('Текст жалобы',
         blank=True
