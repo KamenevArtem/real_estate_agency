@@ -6,11 +6,12 @@ from django.db import migrations
 def add_owners(property, schema_editor):
     Flat = property.get_model('property', 'Flat')
     Owner = property.get_model('property', 'Owner')
-    for owner, phone, pure_phone in Flat.objects.values_list(
+    owner_description = Flat.objects.values_list(
         'owner',
         'owners_phonenumber',
         'owner_pure_phone'
-        ):
+        )
+    for owner, phone, pure_phone in owner_description.iterator():
         Owner.objects.get_or_create(
             name=owner,
             phonenumber=phone,

@@ -6,7 +6,8 @@ import phonenumbers
 
 def purify_owner_phone_number(property, schema_editor):
     Flat = property.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    flats = Flat.objects.all()
+    for flat in flats.iterator():
         parsed_phonenumber = phonenumbers.parse(
             flat.owners_phonenumber,
             'RU'
