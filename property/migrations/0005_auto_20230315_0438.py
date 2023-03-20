@@ -4,12 +4,19 @@ from django.db import migrations
 
 def fill_Flat_new_building_field(property, schema_editor):
     Flat = property.get_model('property', 'Flat')
-    flats = Flat.objects.select_related(
-        'constrstucrion_year'
+    flats = Flat.objects.values(
+        'construction_year'
         ).filter(
             construction_year__gte=2015
             ).update(
                 new_building=True
+                )
+    flats = Flat.objects.values(
+        'construction_year'
+        ).filter(
+            construction_year__lt=2015
+            ).update(
+                new_building=False
                 )
 
 

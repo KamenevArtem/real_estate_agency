@@ -8,7 +8,7 @@ def connect_flat_and_owners(property, schema_editor):
     Owner = property.get_model('property', 'Owner')
     flats = Flat.objects.values_list('owner', 'id')
     for flat_owner, flat_id in flats.iterator():
-        owner = Owner.objects.filter(name=flat_owner)[0]
+        owner = Owner.objects.filter(name=flat_owner).first()
         owner.owned_flats.set([flat_id])
 
 
